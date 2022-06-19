@@ -8,7 +8,7 @@
     
     <ul>
         <li>
-            <a href="" id="authorize_public">Click to pull your subscriber data to this page</a>
+            <a href="" id="authorize_public">11</a>
         </li>
     </ul>
   
@@ -16,8 +16,6 @@
     <div id="user_data"></div>
 
     <script type="text/javascript">
-        function 
-        
         // These are set for the GitHub Pages Example
         // Substitute as needed
         var client_id = 'v8m8wmjbrtnb8vm3lxnwuzurkkkfjo';
@@ -26,7 +24,6 @@
         let scope = '';
         let apiURL = 'https://api.twitch.tv/helix/bits/cheermotes';
         let desiredKey = "prefix";
-        
         let dataToSave = "";
 
         document.getElementById('authorize_public').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=' + scope);
@@ -53,11 +50,12 @@
                 .then(resp => resp.json())
                 .then(resp => {
                     document.getElementById('user_data').innerHTML = '<p>Your Twitch Profile from Helix:</p>';
+                    var table = document.createElement('table');
+                    document.getElementById('user_data').append(table);
                     for (let i = 0; i < resp.data.length; i++) {
                         for (let key in resp.data[i]) {
                             if (key === desiredKey) {
-                                //names.push(resp.data[i][key]);
-                                dataToSave += resp.data[i][key];
+                                dataToSave += resp.data[i][key] + "%";
                             }
                         }
                     }
