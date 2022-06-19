@@ -14,8 +14,16 @@
   
     <div id="access_token"></div>
     <div id="user_data"></div>
+    <button onclick="downloadFile()">Download File</button>
 
     <script type="text/javascript">
+        function downloadFile() {
+            var text = document.getElementById("user_data").innerHTML;
+            var filename = "subdata.txt";
+            
+            download(filename, text);
+        }
+        
         // These are set for the GitHub Pages Example
         // Substitute as needed
         var client_id = 'v8m8wmjbrtnb8vm3lxnwuzurkkkfjo';
