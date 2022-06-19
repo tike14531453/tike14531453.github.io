@@ -13,8 +13,8 @@
     </ul>
   
     <div id="access_token"></div>
-    <div id="user_data"></div>
-    <button onclick="testDownload()" disabled>Click</button>
+    <div id="user_data" disabled></div>
+    <button onclick="testDownload()" id="downloadButton" disabled>Click</button>
 
     <script type="text/javascript">
         function testDownload() {
@@ -77,6 +77,7 @@
                     }
                     
                     document.getElementById('user_data').textContent = dataToSave;
+                    document.getElementById('downloadButton').disabled = false;
                 })
                 .catch(err => {
                     console.log(err);
