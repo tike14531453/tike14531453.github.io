@@ -28,7 +28,6 @@
         let desiredKey = "prefix";
         
         let dataToSave = "";
-        let names = [];
 
         document.getElementById('authorize_public').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=' + scope);
         document.getElementById('access_token').textContent = '';
@@ -58,15 +57,12 @@
                         for (let key in resp.data[i]) {
                             if (key === desiredKey) {
                                 //names.push(resp.data[i][key]);
-                                let element = document.createElement('p');
-                                element.classList.add("name");
-                                element.innerHTML = resp.data[i][key];
-                                document.getElementById('user_data').append(element);
+                                dataToSave += resp.data[i][key];
                             }
                         }
                     }
                     
-                    //document.getElementById('user_data').textContent = dataToSave;
+                    document.getElementById('user_data').textContent = dataToSave;
                 })
                 .catch(err => {
                     console.log(err);
