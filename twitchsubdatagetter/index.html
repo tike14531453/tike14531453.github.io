@@ -14,16 +14,23 @@
   
     <div id="access_token"></div>
     <div id="user_data"></div>
-    <input type="button" id="dwn-btn" value="Download your subscriber data"/>
+    <button onclick="testDownload()">Click</button>
 
     <script type="text/javascript">
-        document.getElementById("dwn-btn").addEventListener("click", function(){
-            // Generate download of hello.txt file with some content
-            var text = document.getElementById("user_data").value;
-            var filename = "subdata.txt";
+        function testDownload() {
+          var filename = "test.txt";
+          var text = "Hello, world";
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+          element.setAttribute('download', filename);
 
-            download(filename, text);
-        }, false);
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        }
         
         // These are set for the GitHub Pages Example
         // Substitute as needed
