@@ -14,7 +14,7 @@
   
     <div id="access_token"></div>
     <div id="user_data"></div>
-    <button onclick="downloadFile()">Download File</button>
+    <input type="button" id="dwn-btn" value="Download your subscriber data"/>
 
     <script type="text/javascript">
         function downloadFile() {
@@ -23,6 +23,14 @@
             
             download(filename, text);
         }
+        
+        document.getElementById("dwn-btn").addEventListener("click", function(){
+            // Generate download of hello.txt file with some content
+            var text = document.getElementById("user_data").innerHTML;
+            var filename = "hello.txt";
+
+            download(filename, text);
+        }, false);
         
         // These are set for the GitHub Pages Example
         // Substitute as needed
