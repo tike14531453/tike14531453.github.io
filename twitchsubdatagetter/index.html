@@ -14,12 +14,12 @@
   
     <div id="access_token"></div>
     <div id="user_data"></div>
-    <button onclick="testDownload()">Click</button>
+    <button onclick="testDownload()" disabled>Click</button>
 
     <script type="text/javascript">
         function testDownload() {
           var filename = "test.txt";
-          var text = "Hello, world";
+          var text = document.getElementById('user_data').textContent;
           var element = document.createElement('a');
           element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
           element.setAttribute('download', filename);
