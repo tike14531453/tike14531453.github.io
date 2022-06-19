@@ -8,7 +8,7 @@
     
     <ul>
         <li>
-            <a href="" id="authorize_public">Click to authorize access to subscriber data. (3)</a>
+            <a href="" id="authorize_public">Click to authorize access to subscriber data.</a>
         </li>
     </ul>
   
@@ -41,9 +41,6 @@
         let apiURL = 'https://api.twitch.tv/helix/bits/cheermotes';
         let desiredKey = "prefix";
         let dataToSave = "";
-        
-        // test
-        let viewerUrl = "http://tmi.twitch.tv/group/user/scarra/chatters";
 
         document.getElementById('authorize_public').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=' + scope);
         document.getElementById('access_token').textContent = '';
@@ -87,35 +84,6 @@
                     document.getElementById('user_data').textContent = 'Something went wrong';
                 });
                 
-                // viewer test fetch
-                dataToSave = "";
-                
-                fetch(
-                    viewerUrl,
-                    {
-                        "headers": {
-                            "Client-ID": client_id,
-                            "Authorization": "Bearer " + access_token
-                        }
-                    }
-                )
-                .then(resp => resp.json())
-                .then(resp => {
-                    document.getElementById('user_data').innerHTML = '<p>Your Twitch Profile from Helix:</p>';
-                    var table = document.createElement('table');
-                    document.getElementById('user_data').append(table);
-                    for (let key in resp.chatters.viewers) {
-                        dataToSave += key;
-
-                    }
-                    
-                    document.getElementById('access_token').textContent = dataToSave;
-                    document.getElementById('downloadButton').disabled = false;
-                })
-                .catch(err => {
-                    console.log(err);
-                    document.getElementById('user_data').textContent = 'Something went wrong';
-                });
             }
         } else if (document.location.search && document.location.search != '') {
             var parsedParams = new URLSearchParams(window.location.search);
