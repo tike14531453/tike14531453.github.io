@@ -22,7 +22,6 @@
         var redirect = 'https://tike14531453.github.io/twitchsubdatagetter/';
 
         document.getElementById('authorize_public').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token');
-        document.getElementById('authorize_email').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=user:read:email');
         document.getElementById('access_token').textContent = '';
 
         if (document.location.hash && document.location.hash != '') {
